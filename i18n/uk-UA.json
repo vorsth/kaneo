@@ -866,7 +866,9 @@
 			"on": "Увімк.",
 			"off": "Вимк.",
 			"newColumnPlaceholder": "Назва нової колонки...",
-			"add": "Додати"
+			"add": "Додати",
+			"noColor": "No color",
+			"toastColorUpdated": "Column color updated"
 		},
 		"githubIntegration": {
 			"validation": {

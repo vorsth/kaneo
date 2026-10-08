@@ -1094,7 +1094,9 @@
 			"toastIconUpdated": "Zaktualizowano ikonę kolumny",
 			"toastRenamed": "Zmieniono nazwę kolumny",
 			"toastRenameError": "Nie udało się zmienić nazwy kolumny",
-			"toastUpdateError": "Nie udało się zaktualizować kolumny"
+			"toastUpdateError": "Nie udało się zaktualizować kolumny",
+			"noColor": "No color",
+			"toastColorUpdated": "Column color updated"
 		},
 		"developer": "Deweloper",
 		"developerPage": {

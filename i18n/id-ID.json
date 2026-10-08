@@ -863,7 +863,9 @@
 			"on": "Aktif",
 			"off": "Nonaktif",
 			"newColumnPlaceholder": "Nama kolom baru...",
-			"add": "Tambah"
+			"add": "Tambah",
+			"noColor": "No color",
+			"toastColorUpdated": "Column color updated"
 		},
 		"githubIntegration": {
 			"validation": {

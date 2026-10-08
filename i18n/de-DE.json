@@ -944,7 +944,9 @@
 			"on": "Ein",
 			"off": "Aus",
 			"newColumnPlaceholder": "Neuer Spaltenname...",
-			"add": "Hinzufügen"
+			"add": "Hinzufügen",
+			"noColor": "No color",
+			"toastColorUpdated": "Column color updated"
 		},
 		"githubIntegration": {
 			"validation": {

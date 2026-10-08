@@ -178,18 +178,22 @@ export default function TaskRelations({
     return new Set<string>();
   }, [projectData]);
 
-  const columnIconBySlug = useMemo(() => {
-    const icons = new Map<string, string | null | undefined>();
-    if (!projectData) return icons;
+  const columnAppearanceBySlug = useMemo(() => {
+    const appearances = new Map<
+      string,
+      { icon?: string | null; color?: string | null }
+    >();
+    if (!projectData) return appearances;
     if ("columns" in projectData && Array.isArray(projectData.columns)) {
       for (const col of projectData.columns as Array<{
         id: string;
         icon?: string | null;
+        color?: string | null;
       }>) {
-        icons.set(col.id, col.icon);
+        appearances.set(col.id, { icon: col.icon, color: col.color });
       }
     }
-    return icons;
+    return appearances;
   }, [projectData]);
 
   const filteredTasks = allTasks.filter(
@@ -323,7 +327,10 @@ export default function TaskRelations({
                               {getColumnIcon(
                                 item.task.status,
                                 finalStatusSlugs.has(item.task.status),
-                                columnIconBySlug.get(item.task.status),
+                                columnAppearanceBySlug.get(item.task.status)
+                                  ?.icon,
+                                columnAppearanceBySlug.get(item.task.status)
+                                  ?.color,
                               )}
                             </button>
                           </SubtaskStatusPopover>
@@ -439,7 +446,8 @@ export default function TaskRelations({
                             {getColumnIcon(
                               item.status,
                               false,
-                              columnIconBySlug.get(item.status),
+                              columnAppearanceBySlug.get(item.status)?.icon,
+                              columnAppearanceBySlug.get(item.status)?.color,
                             )}
                             <span className="text-xs text-muted-foreground shrink-0 font-mono">
                               {project?.slug}-{item.number}

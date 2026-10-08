@@ -77,6 +77,12 @@
               "null"
             ]
           },
+          "color": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "isFinal": {
             "type": "boolean"
           },
@@ -95,6 +101,7 @@
           "slug",
           "name",
           "icon",
+          "color",
           "isFinal",
           "tasks"
         ]
@@ -945,6 +952,12 @@
               "null"
             ]
           },
+          "statusColor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "priority": {
             "type": "string",
             "description": "One of: no-priority, low, medium, high, urgent."
@@ -983,6 +996,7 @@
           "status",
           "statusName",
           "statusIcon",
+          "statusColor",
           "priority",
           "dueDate",
           "projectName",

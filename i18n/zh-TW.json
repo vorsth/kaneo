@@ -1096,7 +1096,9 @@
 			"on": "開",
 			"off": "關",
 			"newColumnPlaceholder": "新欄位名稱…",
-			"add": "新增"
+			"add": "新增",
+			"noColor": "No color",
+			"toastColorUpdated": "Column color updated"
 		},
 		"githubIntegration": {
 			"validation": {

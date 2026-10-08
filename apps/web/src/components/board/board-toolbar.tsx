@@ -185,7 +185,12 @@ export default function BoardToolbar({
   };
   const getStatusIcon = (statusId: string) => {
     const column = project?.columns?.find((col) => col.id === statusId);
-    return getColumnIcon(statusId, column?.isFinal, column?.icon);
+    return getColumnIcon(
+      statusId,
+      column?.isFinal,
+      column?.icon,
+      column?.color,
+    );
   };
 
   const getPriorityDisplayName = (priority: string) =>

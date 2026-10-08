@@ -4,6 +4,7 @@ import TaskCardContextMenuContent from "@/components/kanban-board/task-card-cont
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ContextMenu, ContextMenuTrigger } from "@/components/ui/context-menu";
+import { useGetColumns } from "@/hooks/queries/column/use-get-columns";
 import { getColumnIcon } from "@/lib/column";
 import { getInitials } from "@/lib/get-initials";
 import type Task from "@/types/task";
@@ -47,6 +48,8 @@ export default function SubtaskRow({
 }: SubtaskRowProps) {
   const reduceMotion = useReducedMotion();
   const { t } = useTranslation();
+  const { data: columns = [] } = useGetColumns(projectId);
+  const statusColumn = columns.find((col) => col.slug === task.status);
 
   return (
     <motion.div
@@ -82,7 +85,12 @@ export default function SubtaskRow({
                 type="button"
                 className="shrink-0 flex items-center justify-center rounded p-0.5 transition-colors outline-none [&_svg]:text-muted-foreground hover:[&_svg]:text-foreground"
               >
-                {getColumnIcon(task.status, false)}
+                {getColumnIcon(
+                  task.status,
+                  statusColumn?.isFinal,
+                  statusColumn?.icon,
+                  statusColumn?.color,
+                )}
               </button>
             </SubtaskStatusPopover>
 

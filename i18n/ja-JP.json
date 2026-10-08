@@ -1097,7 +1097,9 @@
 			"on": "オン",
 			"off": "オフ",
 			"newColumnPlaceholder": "新しいカラム名...",
-			"add": "追加"
+			"add": "追加",
+			"noColor": "No color",
+			"toastColorUpdated": "Column color updated"
 		},
 		"githubIntegration": {
 			"validation": {

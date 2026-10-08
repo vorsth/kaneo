@@ -56,6 +56,7 @@ describe("useTaskFiltersWithLabelsSupport", () => {
           slug: "todo",
           name: "Todo",
           icon: null,
+          color: null,
           isFinal: false,
           tasks: [
             {
@@ -147,6 +148,7 @@ describe("useTaskFiltersWithLabelsSupport", () => {
             slug: "todo",
             name: "Todo",
             icon: null,
+            color: null,
             isFinal: false,
             tasks: [
               {

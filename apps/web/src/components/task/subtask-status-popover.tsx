@@ -35,6 +35,7 @@ export default function SubtaskStatusPopover({
     value: col.slug,
     label: col.name,
     icon: col.icon,
+    color: col.color,
     isFinal: col.isFinal,
   }));
   const { mutateAsync: updateTaskStatus } = useUpdateTaskStatus();
@@ -93,7 +94,12 @@ export default function SubtaskStatusPopover({
               className="w-full justify-start gap-2 h-8 px-2 rounded-none first:rounded-t-md last:rounded-b-md"
               onClick={() => handleStatusChange(status.value)}
             >
-              {getColumnIcon(status.value, status.isFinal, status.icon)}
+              {getColumnIcon(
+                status.value,
+                status.isFinal,
+                status.icon,
+                status.color,
+              )}
               <span className="text-sm">
                 {getStatusDisplayLabel(status.value, status.label)}
               </span>

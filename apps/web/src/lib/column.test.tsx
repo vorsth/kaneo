@@ -23,4 +23,23 @@ describe("stored column icons", () => {
     expect(getColumnIcon("in-progress").type).toBe(CircleDot);
     expect(getColumnIcon("done").type).toBe(CheckCircle2);
   });
+  it("strokes the icon with the column color", () => {
+    expect(
+      getColumnIcon("to-do", false, "CircleDot", "#ff0000").props.style,
+    ).toEqual({ stroke: "#ff0000" });
+    expect(getColumnIcon("to-do", false, null, "purple").props.style).toEqual({
+      stroke: "var(--color-violet-500)",
+    });
+    expect(getColumnIcon("custom", true, "nope", "red").props.style).toEqual({
+      stroke: "var(--color-red-600)",
+    });
+  });
+  it("leaves uncolored columns on the inherited color", () => {
+    expect(getColumnIcon("to-do", false, "CircleDot").props.style).toBe(
+      undefined,
+    );
+    expect(getColumnIcon("to-do", false, null, null).props.style).toBe(
+      undefined,
+    );
+  });
 });

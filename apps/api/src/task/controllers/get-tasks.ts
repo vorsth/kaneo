@@ -329,6 +329,7 @@ async function getTasksPage(
         columnTable.position,
         columnTable.name,
         columnTable.icon,
+        columnTable.color,
         columnTable.isFinal,
       ]),
     })
@@ -423,6 +424,7 @@ async function getTasksPage(
     name: column.name,
     position: column.position,
     icon: column.icon,
+    color: column.color,
     isFinal: column.isFinal,
     tasks: paginatedTasks
       .filter((task) => task.status === column.slug)

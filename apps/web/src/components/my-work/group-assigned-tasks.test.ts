@@ -21,6 +21,7 @@ function task(
     status: "to-do",
     statusName: "To Do",
     statusIcon: null,
+    statusColor: null,
     priority: "medium",
     dueDate: dueDate ? dueDate.toISOString() : null,
     projectName: projectId,

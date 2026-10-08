@@ -326,7 +326,12 @@ function ListView({
               )}
             />
             <div className="flex items-center gap-2 h-4">
-              {getColumnIcon(column.id, column.isFinal, column.icon)}
+              {getColumnIcon(
+                column.id,
+                column.isFinal,
+                column.icon,
+                column.color,
+              )}
               <div className="flex items-center gap-1">
                 <span className="mt-1 mr-1">{column.name}</span>
                 <span className="text-xs text-muted-foreground mt-0.5">

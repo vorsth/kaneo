@@ -40,6 +40,7 @@ describe("removeTaskFromProject", () => {
           slug: "to-do",
           name: "To Do",
           icon: null,
+          color: null,
           isFinal: false,
           tasks: [task("delete-me", "to-do"), task("keep-me", "to-do")],
         },

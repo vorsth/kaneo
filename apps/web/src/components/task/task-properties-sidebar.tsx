@@ -107,6 +107,7 @@ export default function TaskPropertiesSidebar({
   );
   const statusIsFinal = statusColumn?.isFinal ?? false;
   const statusIcon = statusColumn?.icon;
+  const statusColor = statusColumn?.color;
 
   const projectSlug = project?.slug;
   const taskNumber = task?.number;
@@ -188,6 +189,7 @@ export default function TaskPropertiesSidebar({
                       task.status ?? "",
                       statusIsFinal,
                       statusIcon,
+                      statusColor,
                     )}
                     <span className="text-xs font-semibold truncate">
                       {statusLabel}
@@ -337,6 +339,7 @@ export default function TaskPropertiesSidebar({
                         task.status ?? "",
                         statusIsFinal,
                         statusIcon,
+                        statusColor,
                       )}
                       <span className="text-xs font-semibold truncate">
                         {statusLabel}
@@ -486,6 +489,7 @@ export default function TaskPropertiesSidebar({
                         task.status ?? "",
                         statusIsFinal,
                         statusIcon,
+                        statusColor,
                       )}
                       <span className="text-xs font-semibold truncate">
                         {statusLabel}

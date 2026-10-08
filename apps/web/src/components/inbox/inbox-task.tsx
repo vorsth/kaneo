@@ -124,6 +124,7 @@ export function InboxTask({ taskId, workspaceId }: InboxTaskProps) {
                 task.status,
                 statusColumn?.isFinal,
                 statusColumn?.icon,
+                statusColumn?.color,
               )}
               {getStatusDisplayLabel(task.status, statusColumn?.name)}
             </dd>

@@ -1,5 +1,6 @@
 import { CheckCircle2, Circle, GripVertical, Plus, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import ColumnColorPicker from "@/components/project/column-color-picker";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,6 +20,7 @@ import { useUpdateColumn } from "@/hooks/mutations/column/use-update-column";
 import { useGetColumns } from "@/hooks/queries/column/use-get-columns";
 import { useWorkspacePermission } from "@/hooks/use-workspace-permission";
 import { getColumnIcon } from "@/lib/column";
+import { resolveLabelColor } from "@/lib/label-color";
 import { toast } from "@/lib/toast";
 import { cn } from "@/lib/utils";
 
@@ -37,6 +39,7 @@ export default function ColumnEditor({ projectId }: ColumnEditorProps) {
   const canEdit = canManageProjects();
   const [newColumnName, setNewColumnName] = useState("");
   const [newColumnIcon, setNewColumnIcon] = useState("Circle");
+  const [newColumnColor, setNewColumnColor] = useState<string | null>(null);
   const [iconPickerColumnId, setIconPickerColumnId] = useState<string | null>(
     null,
   );
@@ -56,10 +59,15 @@ export default function ColumnEditor({ projectId }: ColumnEditorProps) {
     try {
       await createColumn({
         projectId,
-        data: { name: newColumnName.trim(), icon: newColumnIcon },
+        data: {
+          name: newColumnName.trim(),
+          icon: newColumnIcon,
+          ...(newColumnColor && { color: newColumnColor }),
+        },
       });
       setNewColumnName("");
       setNewColumnIcon("Circle");
+      setNewColumnColor(null);
       toast.success(t("settings:columnEditor.toastCreated"));
     } catch (error) {
       toast.error(
@@ -100,12 +108,29 @@ export default function ColumnEditor({ projectId }: ColumnEditorProps) {
     }
   };
 
-  const handleUpdateIcon = async (id: string, icon: string) => {
+  const handleUpdateIcon = async (
+    id: string,
+    icon: string,
+    color: string | null,
+  ) => {
     try {
-      await updateColumn({ id, projectId, data: { icon } });
+      await updateColumn({ id, projectId, data: { icon, color } });
       setIconPickerColumnId(null);
       setIconSearch("");
       toast.success(t("settings:columnEditor.toastIconUpdated"));
+    } catch (error) {
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : t("settings:columnEditor.toastUpdateError"),
+      );
+    }
+  };
+
+  const handleUpdateColor = async (id: string, color: string | null) => {
+    try {
+      await updateColumn({ id, projectId, data: { color } });
+      toast.success(t("settings:columnEditor.toastColorUpdated"));
     } catch (error) {
       toast.error(
         error instanceof Error
@@ -235,11 +260,15 @@ export default function ColumnEditor({ projectId }: ColumnEditorProps) {
                   title={t("settings:columnEditor.pickIconTitle")}
                   disabled={!canEdit}
                 >
-                  {getColumnIcon(col.slug, col.isFinal, col.icon)}
+                  {getColumnIcon(col.slug, col.isFinal, col.icon, col.color)}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-80" align="start">
                 <div className="space-y-2">
+                  <ColumnColorPicker
+                    value={col.color}
+                    onChange={(color) => handleUpdateColor(col.id, color)}
+                  />
                   <Input
                     value={iconSearch}
                     onChange={(e) => setIconSearch(e.target.value)}
@@ -263,7 +292,9 @@ export default function ColumnEditor({ projectId }: ColumnEditorProps) {
                             type="button"
                             variant="ghost"
                             size="sm"
-                            onClick={() => handleUpdateIcon(col.id, iconName)}
+                            onClick={() =>
+                              handleUpdateIcon(col.id, iconName, col.color)
+                            }
                             className={cn(
                               "h-10 items-center justify-center rounded-md p-0",
                               isSelected &&
@@ -271,7 +302,14 @@ export default function ColumnEditor({ projectId }: ColumnEditorProps) {
                             )}
                             title={iconName}
                           >
-                            <Icon className="h-4 w-4" />
+                            <Icon
+                              className="h-4 w-4"
+                              style={
+                                col.color
+                                  ? { stroke: resolveLabelColor(col.color) }
+                                  : undefined
+                              }
+                            />
                           </Button>
                         );
                       })}
@@ -361,11 +399,15 @@ export default function ColumnEditor({ projectId }: ColumnEditorProps) {
                 className="h-8 w-8 p-0 shrink-0"
                 title={t("settings:columnEditor.pickIconTitle")}
               >
-                {getColumnIcon("", false, newColumnIcon)}
+                {getColumnIcon("", false, newColumnIcon, newColumnColor)}
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-80" align="start">
               <div className="space-y-2">
+                <ColumnColorPicker
+                  value={newColumnColor}
+                  onChange={setNewColumnColor}
+                />
                 <Input
                   value={iconSearch}
                   onChange={(e) => setIconSearch(e.target.value)}
@@ -396,7 +438,14 @@ export default function ColumnEditor({ projectId }: ColumnEditorProps) {
                           )}
                           title={iconName}
                         >
-                          <Icon className="h-4 w-4" />
+                          <Icon
+                            className="h-4 w-4"
+                            style={
+                              newColumnColor
+                                ? { stroke: resolveLabelColor(newColumnColor) }
+                                : undefined
+                            }
+                          />
                         </Button>
                       );
                     })}

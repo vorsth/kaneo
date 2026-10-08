@@ -14,6 +14,7 @@ function task(id: string, dueDate: Date | null): AssignedTask {
     status: "to-do",
     statusName: "To Do",
     statusIcon: null,
+    statusColor: null,
     priority: "medium",
     dueDate: dueDate ? dueDate.toISOString() : null,
     projectName: "Web",

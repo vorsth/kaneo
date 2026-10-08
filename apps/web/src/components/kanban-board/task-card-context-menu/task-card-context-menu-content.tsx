@@ -62,12 +62,14 @@ export default function TaskCardContextMenuContent({
           slug: col.id,
           name: col.name,
           icon: col.icon,
+          color: col.color,
           isFinal: col.isFinal,
         }))
       : columnsData.map((col) => ({
           slug: col.slug,
           name: col.name,
           icon: col.icon,
+          color: col.color,
           isFinal: col.isFinal,
         }));
   const { data: projectMembers } = useGetProjectMembers({
@@ -216,7 +218,7 @@ export default function TaskCardContextMenuContent({
                 closeOnClick
                 className="[&_svg]:text-muted-foreground"
               >
-                {getColumnIcon(col.slug, col.isFinal, col.icon)}
+                {getColumnIcon(col.slug, col.isFinal, col.icon, col.color)}
                 <span>{col.name}</span>
               </ContextMenuCheckboxItem>
             ))}

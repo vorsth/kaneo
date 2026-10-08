@@ -309,7 +309,7 @@ function BulkToolbar() {
         items: (project?.columns ?? []).map((col) => ({
           value: `status-${col.id}`,
           label: col.name,
-          icon: getColumnIcon(col.id, col.isFinal, col.icon),
+          icon: getColumnIcon(col.id, col.isFinal, col.icon, col.color),
           onRun: () => {
             void handleBulkChangeStatus(col.id);
           },

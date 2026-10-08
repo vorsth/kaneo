@@ -55,6 +55,7 @@ function makeProject() {
         slug: "to-do",
         name: "To Do",
         icon: null,
+        color: null,
         isFinal: false,
         tasks: [makeTask("delete-me"), makeTask("keep-me")],
       },

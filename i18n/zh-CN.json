@@ -1097,7 +1097,9 @@
 			"on": "开",
 			"off": "关",
 			"newColumnPlaceholder": "新列名称…",
-			"add": "添加"
+			"add": "添加",
+			"noColor": "No color",
+			"toastColorUpdated": "Column color updated"
 		},
 		"githubIntegration": {
 			"validation": {

@@ -2,11 +2,13 @@ import { CheckCircle2, Circle } from "lucide-react";
 import columnIcons, {
   DEFAULT_COLUMN_ICON_NAMES,
 } from "@/constants/column-icons";
+import { resolveLabelColor } from "@/lib/label-color";
 
 export const getColumnIcon = (
   columnId: string,
   isFinal?: boolean,
   iconName?: string | null,
+  color?: string | null,
 ) => {
   const resolvedIconName =
     iconName ||
@@ -16,17 +18,13 @@ export const getColumnIcon = (
         ]
       : undefined);
   const Icon =
-    typeof resolvedIconName === "string" &&
-    Object.hasOwn(columnIcons, resolvedIconName) &&
-    columnIcons[resolvedIconName as keyof typeof columnIcons];
+    (typeof resolvedIconName === "string" &&
+      Object.hasOwn(columnIcons, resolvedIconName) &&
+      columnIcons[resolvedIconName as keyof typeof columnIcons]) ||
+    (isFinal ? CheckCircle2 : Circle);
+  // Set on the stroke itself: callers recolor icons through `text-*` classes
+  // (currentColor), which must not override a column's chosen color.
+  const style = color ? { stroke: resolveLabelColor(color) } : undefined;
 
-  if (Icon) {
-    return <Icon className="w-4 h-4 text-muted-foreground" />;
-  }
-
-  return isFinal ? (
-    <CheckCircle2 className="w-4 h-4 text-muted-foreground" />
-  ) : (
-    <Circle className="w-4 h-4 text-muted-foreground" />
-  );
+  return <Icon className="w-4 h-4 text-muted-foreground" style={style} />;
 };

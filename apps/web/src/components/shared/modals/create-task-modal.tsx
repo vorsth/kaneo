@@ -1174,6 +1174,7 @@ function CreateTaskModalContent({
                   taskStatus,
                   initialColumn?.isFinal,
                   initialColumn?.icon,
+                  initialColumn?.color,
                 )}
                 {statusLabel}
               </div>
