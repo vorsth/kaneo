@@ -162,6 +162,9 @@
 			"notSet": "Not Set",
 			"true": "True",
 			"undefined": "Undefined"
+		},
+		"colorPicker": {
+			"noColor": "No color"
 		}
 	},
 	"auth": {
@@ -1098,7 +1101,6 @@
 			"off": "Tắt",
 			"newColumnPlaceholder": "Tên cột mới...",
 			"add": "Thêm",
-			"noColor": "No color",
 			"toastColorUpdated": "Column color updated"
 		},
 		"githubIntegration": {

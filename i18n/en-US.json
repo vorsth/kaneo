@@ -162,6 +162,9 @@
 					"crimson": "Crimson"
 				}
 			}
+		},
+		"colorPicker": {
+			"noColor": "No color"
 		}
 	},
 	"auth": {
@@ -1321,7 +1324,6 @@
 			"toastDeleteError": "Failed to delete column",
 			"loading": "Loading columns...",
 			"pickIconTitle": "Pick column icon",
-			"noColor": "No color",
 			"searchIconsPlaceholder": "Search icons...",
 			"doneColumnTooltip": "Treat this as a done column",
 			"doneColumn": "Done column",

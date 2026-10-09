@@ -162,6 +162,9 @@
 			"notSet": "未设置",
 			"true": "是",
 			"undefined": "未定义"
+		},
+		"colorPicker": {
+			"noColor": "No color"
 		}
 	},
 	"auth": {
@@ -1098,7 +1101,6 @@
 			"off": "关",
 			"newColumnPlaceholder": "新列名称…",
 			"add": "添加",
-			"noColor": "No color",
 			"toastColorUpdated": "Column color updated"
 		},
 		"githubIntegration": {

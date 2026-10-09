@@ -162,6 +162,9 @@
 			"notSet": "Not Set",
 			"true": "True",
 			"undefined": "Undefined"
+		},
+		"colorPicker": {
+			"noColor": "No color"
 		}
 	},
 	"auth": {
@@ -1095,7 +1098,6 @@
 			"toastRenamed": "Zmieniono nazwę kolumny",
 			"toastRenameError": "Nie udało się zmienić nazwy kolumny",
 			"toastUpdateError": "Nie udało się zaktualizować kolumny",
-			"noColor": "No color",
 			"toastColorUpdated": "Column color updated"
 		},
 		"developer": "Deweloper",

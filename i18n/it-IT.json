@@ -162,6 +162,9 @@
 			"notSet": "Not Set",
 			"true": "True",
 			"undefined": "Undefined"
+		},
+		"colorPicker": {
+			"noColor": "No color"
 		}
 	},
 	"auth": {
@@ -1102,7 +1105,6 @@
 			"off": "Disattivo",
 			"newColumnPlaceholder": "Nuovo nome colonna...",
 			"add": "Aggiungi",
-			"noColor": "No color",
 			"toastColorUpdated": "Column color updated"
 		},
 		"githubIntegration": {

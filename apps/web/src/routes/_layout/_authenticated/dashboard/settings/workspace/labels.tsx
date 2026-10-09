@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Pencil, Plus, Tag, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import ColorPicker from "@/components/common/color-picker";
 import PageTitle from "@/components/page-title";
 import {
   AlertDialog,
@@ -38,13 +39,11 @@ import {
 } from "@/components/ui/empty";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import labelColors from "@/constants/label-colors";
 import useCreateLabel from "@/hooks/mutations/label/use-create-label";
 import useDeleteLabel from "@/hooks/mutations/label/use-delete-label";
 import useUpdateLabel from "@/hooks/mutations/label/use-update-label";
 import useGetLabelsByWorkspace from "@/hooks/queries/label/use-get-labels-by-workspace";
 import { useWorkspacePermission } from "@/hooks/use-workspace-permission";
-import { cn } from "@/lib/cn";
 import { resolveLabelColor } from "@/lib/label-color";
 import { toast } from "@/lib/toast";
 import { SettingsPage } from "@/components/settings/settings-page";
@@ -406,23 +405,7 @@ function RouteComponent() {
                   defaultValue: "Color",
                 })}
               </Label>
-              <div className="flex flex-wrap gap-2">
-                {labelColors.map((c) => (
-                  <button
-                    key={c.value}
-                    type="button"
-                    title={c.label}
-                    className={cn(
-                      "w-8 h-8 rounded-full border-2 transition-[scale,border-color]",
-                      newColor === c.value
-                        ? "border-foreground scale-110"
-                        : "border-transparent hover:scale-110",
-                    )}
-                    style={{ backgroundColor: c.color }}
-                    onClick={() => setNewColor(c.value)}
-                  />
-                ))}
-              </div>
+              <ColorPicker value={newColor} onChange={setNewColor} />
             </div>
           </div>
 
@@ -495,23 +478,7 @@ function RouteComponent() {
                   defaultValue: "Color",
                 })}
               </Label>
-              <div className="flex flex-wrap gap-2">
-                {labelColors.map((c) => (
-                  <button
-                    key={c.value}
-                    type="button"
-                    title={c.label}
-                    className={cn(
-                      "w-8 h-8 rounded-full border-2 transition-[scale,border-color]",
-                      editColor === c.value
-                        ? "border-foreground scale-110"
-                        : "border-transparent hover:scale-110",
-                    )}
-                    style={{ backgroundColor: c.color }}
-                    onClick={() => setEditColor(c.value)}
-                  />
-                ))}
-              </div>
+              <ColorPicker value={editColor} onChange={setEditColor} />
             </div>
           </div>
 

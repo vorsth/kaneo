@@ -1,6 +1,6 @@
 import { CheckCircle2, Circle, GripVertical, Plus, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import ColumnColorPicker from "@/components/project/column-color-picker";
+import ColorPicker from "@/components/common/color-picker";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -265,7 +265,9 @@ export default function ColumnEditor({ projectId }: ColumnEditorProps) {
               </PopoverTrigger>
               <PopoverContent className="w-80" align="start">
                 <div className="space-y-2">
-                  <ColumnColorPicker
+                  <ColorPicker
+                    allowNone
+                    size="sm"
                     value={col.color}
                     onChange={(color) => handleUpdateColor(col.id, color)}
                   />
@@ -404,7 +406,9 @@ export default function ColumnEditor({ projectId }: ColumnEditorProps) {
             </PopoverTrigger>
             <PopoverContent className="w-80" align="start">
               <div className="space-y-2">
-                <ColumnColorPicker
+                <ColorPicker
+                  allowNone
+                  size="sm"
                   value={newColumnColor}
                   onChange={setNewColumnColor}
                 />
